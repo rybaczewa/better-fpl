@@ -24,6 +24,10 @@ const localDeadline = {
     if (settings.get('convertDeadline') === false)
       return
 
+    // Skip when there's no date on page
+    if (!this.element.attr('datetime'))
+      return
+
     const datetime = new Date(this.element.attr('datetime'))
     const localDatetime = dateformat(datetime, 'dd mmm HH:MM Z')
 
